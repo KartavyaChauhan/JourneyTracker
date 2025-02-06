@@ -1,0 +1,4 @@
+New York,0.0,false
+London,5600.0,true
+Dubai,3400.0,true
+Singapore,7500.0,false
