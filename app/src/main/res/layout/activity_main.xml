@@ -1,52 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/titleText"
+        android:id="@+id/distanceCoveredText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:text="Distance covered: 0 miles | Time: 0.0 hrs"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/appTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="JourneyTracker"
         android:textSize="24sp"
-        android:textStyle="bold"
-        android:textColor="@color/purple_700"
-        android:paddingStart="16dp"
-        android:paddingTop="8dp"
-        />
+        android:textStyle="bold" />
 
-    <Button
+    <!-- Toggle Unit Button (KM ↔ Miles) -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/toggleUnitButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SWITCH KM/MILES"
-        android:backgroundTint="@color/purple_500"
-        android:textColor="@color/white"
-        android:layout_margin="8dp"
-        />
+        android:text="Switch KM/MILES"
+        android:layout_marginTop="10dp"
+        style="@style/Widget.MaterialComponents.Button" />
 
-    <Button
-        android:id="@+id/nextStop"
+    <!-- Next Stop Button -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/nextStopButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Mark Next Stop"
-        android:layout_marginTop="8dp"/>
+        android:layout_marginTop="10dp"
+        style="@style/Widget.MaterialComponents.Button" />
 
+    <!-- Progress Bar -->
     <ProgressBar
         android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:progress="30"
-        android:progressTint="@color/purple_500"
-        android:backgroundTint="@android:color/darker_gray"
-        android:layout_marginTop="16dp"
-        />
+        android:layout_height="5dp"
+        android:layout_marginTop="10dp"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:progress="0"
+        android:max="100"
+        android:background="@android:color/darker_gray" />
 
+    <!-- RecyclerView for Stops -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/stopsRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp"/>
+        android:layout_marginTop="10dp" />
+
 </LinearLayout>
