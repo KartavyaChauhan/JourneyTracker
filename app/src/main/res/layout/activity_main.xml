@@ -1,65 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
-    tools:context=".MainActivity">
+    android:background="#F5F5F5"
+    android:padding="16dp">
 
-    <TextView
-        android:id="@+id/distanceCoveredText"
+    <!-- Buttons Layout -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textSize="16sp"
-        android:textColor="@android:color/black"
-        android:text="Distance covered: 0 miles | Time: 0.0 hrs"
-        android:gravity="center"/>
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="8dp">
 
-    <TextView
-        android:id="@+id/appTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="JourneyTracker"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/toggleUnitButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SWITCH KM/MILES"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            app:cornerRadius="16dp"
+            android:backgroundTint="@color/purple_700"
+            android:textColor="@android:color/white"
+            android:padding="10dp"/>
 
-    <!-- Toggle Unit Button (KM ↔ Miles) -->
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/toggleUnitButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Switch KM/MILES"
-        android:layout_marginTop="10dp"
-        style="@style/Widget.MaterialComponents.Button" />
-
-    <!-- Next Stop Button -->
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/nextStopButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Mark Next Stop"
-        android:layout_marginTop="10dp"
-        style="@style/Widget.MaterialComponents.Button" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/nextStopButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MARK NEXT STOP"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            app:cornerRadius="16dp"
+            android:backgroundTint="@color/purple_700"
+            android:textColor="@android:color/white"
+            android:padding="10dp"
+            android:layout_marginStart="10dp"/>
+    </LinearLayout>
 
     <!-- Progress Bar -->
     <ProgressBar
         android:id="@+id/progressBar"
-        android:layout_width="match_parent"
-        android:layout_height="5dp"
-        android:layout_marginTop="10dp"
         style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:progressDrawable="@drawable/custom_progress"
         android:progress="0"
         android:max="100"
-        android:background="@android:color/darker_gray" />
+        android:layout_marginVertical="8dp"/>
 
-    <!-- RecyclerView for Stops -->
+    <!-- RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/stopsRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp" />
-
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="4dp"/>
 </LinearLayout>

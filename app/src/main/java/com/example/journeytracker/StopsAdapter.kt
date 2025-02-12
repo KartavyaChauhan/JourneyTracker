@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.journeytracker.model.Stop
 
 class StopsAdapter(private var stops: List<Stop>) : RecyclerView.Adapter<StopsAdapter.StopViewHolder>() {
 
@@ -16,11 +17,6 @@ class StopsAdapter(private var stops: List<Stop>) : RecyclerView.Adapter<StopsAd
         val stopDistance: TextView = itemView.findViewById(R.id.stopDistance)
         val visaRequirement: TextView = itemView.findViewById(R.id.visaRequired)
     }
-    fun updateStops(newStops: List<Stop>) {
-        stops = newStops
-        notifyDataSetChanged()  // Refresh RecyclerView
-    }
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StopViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_stop, parent, false)
@@ -41,6 +37,11 @@ class StopsAdapter(private var stops: List<Stop>) : RecyclerView.Adapter<StopsAd
     }
 
     override fun getItemCount(): Int = stops.size
+
+    fun updateStops(newStops: List<Stop>) {
+        stops = newStops
+        notifyDataSetChanged()
+    }
 
     fun updateCurrentStop(index: Int) {
         currentStopIndex = index

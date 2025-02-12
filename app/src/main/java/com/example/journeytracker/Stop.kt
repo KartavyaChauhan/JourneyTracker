@@ -1,8 +1,7 @@
-package com.example.journeytracker
+package com.example.journeytracker.model
 
 data class Stop(
-    val name: String,          // Name of the stop
-    val distance: Double,      // Distance from the previous stop
-    val visaRequired: Boolean, // Whether a visa is required
-    val isReached: Boolean = false // Whether the stop has been reached
+    val name: String,
+    val distance: Double,
+    val visaRequired: Boolean
 )

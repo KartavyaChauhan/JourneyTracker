@@ -41,6 +41,7 @@ android {
 dependencies {
     implementation("androidx.appcompat:appcompat:1.6.1") // Ensure this exists
     implementation("com.google.android.material:material:1.10.0") // Add this explicitly
+    implementation ("androidx.cardview:cardview:1.0.0")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
