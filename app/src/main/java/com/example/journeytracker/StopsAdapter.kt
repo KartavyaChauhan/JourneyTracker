@@ -16,6 +16,11 @@ class StopsAdapter(private var stops: List<Stop>) : RecyclerView.Adapter<StopsAd
         val stopDistance: TextView = itemView.findViewById(R.id.stopDistance)
         val visaRequirement: TextView = itemView.findViewById(R.id.visaRequired)
     }
+    fun updateStops(newStops: List<Stop>) {
+        stops = newStops
+        notifyDataSetChanged()  // Refresh RecyclerView
+    }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StopViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_stop, parent, false)

@@ -10,8 +10,10 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.button.MaterialButton
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,7 +23,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var progressBar: ProgressBar
     private lateinit var distanceCoveredText: TextView
 
-    private val speedMph = 500  // Speed in miles per hour
+    private val speedMph = 500
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +36,11 @@ class MainActivity : AppCompatActivity() {
         distanceCoveredText = findViewById(R.id.distanceCoveredText)  // Reference TextView
 
         stopsRecyclerView.layoutManager = LinearLayoutManager(this)
-        stops = readStopsFromFile(this)
+        lifecycleScope.launch {
+            stops = readStopsFromFileAsync(this@MainActivity)
+            adapter.updateStops(stops)  // Update UI once data is loaded
+        }
+
 
         adapter = StopsAdapter(stops)
         stopsRecyclerView.adapter = adapter
@@ -83,7 +89,7 @@ class MainActivity : AppCompatActivity() {
 }
 
 // Function to Read Stops from stops.txt (Inside res/raw/)
-fun readStopsFromFile(context: Context): List<Stop> {
+suspend fun readStopsFromFileAsync(context: Context): List<Stop> = withContext(Dispatchers.IO) {
     val stops = mutableListOf<Stop>()
     val inputStream = context.resources.openRawResource(R.raw.stops)
     inputStream.bufferedReader().useLines { lines ->
@@ -97,5 +103,5 @@ fun readStopsFromFile(context: Context): List<Stop> {
             }
         }
     }
-    return stops
+    stops
 }
