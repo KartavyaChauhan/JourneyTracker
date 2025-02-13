@@ -41,7 +41,6 @@ fun JourneyTrackerApp(viewModel: JourneyViewModel = remember { JourneyViewModel(
     var distanceUnit by remember { mutableStateOf("km") }
     val listState = rememberLazyListState()
 
-    // ✅ FIX: Scroll to current stop automatically
     LaunchedEffect(currentStopIndex) {
         listState.animateScrollToItem(currentStopIndex)
     }
@@ -79,7 +78,6 @@ fun JourneyTrackerApp(viewModel: JourneyViewModel = remember { JourneyViewModel(
             Text("Time Taken: ${timeTaken} min")
             Spacer(modifier = Modifier.height(16.dp))
 
-            // ✅ FIX: Pass listState to ensure smooth scrolling
             JourneyList(stops, distanceUnit, currentStopIndex, listState)
         }
     }
@@ -94,7 +92,7 @@ fun JourneyList(
 ) {
     LazyColumn(state = listState) {
         itemsIndexed(stops) { index, stop ->
-            val (city, distance, visaRequired) = stop  // ✅ Extract visa requirement
+            val (city, distance, visaRequired) = stop 
             val isCurrent = index == currentStopIndex
             JourneyItem(city, distance, distanceUnit, visaRequired, isCurrent)
         }
@@ -124,7 +122,6 @@ fun JourneyItem(city: String, distance: Double, distanceUnit: String, visaRequir
                 style = MaterialTheme.typography.bodyLarge,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
-            // ✅ Add Visa Requirement Display
             Text(
                 text = "Visa Required: $visaRequired",
                 style = MaterialTheme.typography.bodyLarge,
@@ -138,5 +135,5 @@ fun JourneyItem(city: String, distance: Double, distanceUnit: String, visaRequir
 @Preview(showBackground = true)
 @Composable
 fun PreviewJourneyTracker() {
-    JourneyTrackerApp(viewModel = JourneyViewModel()) // Pass ViewModel manually for preview
+    JourneyTrackerApp(viewModel = JourneyViewModel()) 
 }
