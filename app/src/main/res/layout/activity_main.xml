@@ -4,8 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#F5F5F5"
+    android:background="@drawable/gradient_background"
     android:padding="16dp">
+
 
     <!-- Buttons Layout -->
     <LinearLayout
@@ -20,23 +21,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="SWITCH KM/MILES"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            app:cornerRadius="16dp"
-            android:backgroundTint="@color/purple_700"
+            android:backgroundTint="#3B82F6"
             android:textColor="@android:color/white"
-            android:padding="10dp"/>
+            android:padding="12dp"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/nextStopButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="MARK NEXT STOP"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            app:cornerRadius="16dp"
-            android:backgroundTint="@color/purple_700"
+            android:backgroundTint="#16A34A"
             android:textColor="@android:color/white"
-            android:padding="10dp"
-            android:layout_marginStart="10dp"/>
+            android:padding="12dp"
+            android:layout_marginStart="10dp"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
     </LinearLayout>
 
     <!-- Progress Bar -->
@@ -44,11 +43,11 @@
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
-        android:layout_height="8dp"
+        android:layout_height="10dp"
         android:progressDrawable="@drawable/custom_progress"
-        android:progress="0"
+        android:progress="30"
         android:max="100"
-        android:layout_marginVertical="8dp"/>
+        android:layout_marginVertical="10dp"/>
 
     <!-- RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView
@@ -56,5 +55,6 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:padding="4dp"/>
+        android:padding="4dp"
+        android:scrollbars="vertical"/>
 </LinearLayout>

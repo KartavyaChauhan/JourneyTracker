@@ -32,7 +32,6 @@ class StopsAdapter(private var stops: List<Stop>) : RecyclerView.Adapter<StopsAd
         holder.stopDistance.text = "Distance: %.1f $distanceUnit".format(distance)
         holder.visaRequirement.text = "Visa Required: ${if (stop.visaRequired) "Yes" else "No"}"
 
-        // Highlight current stop
         holder.itemView.alpha = if (position == currentStopIndex) 1.0f else 0.5f
     }
 

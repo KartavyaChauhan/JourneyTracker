@@ -1,4 +1,20 @@
 New York,0.0,false
 London,5600.0,true
-Dubai,3400.0,true
-Singapore,7500.0,false
+Paris,5800.0,true
+Berlin,6000.0,true
+Rome,6300.0,true
+Madrid,6400.0,true
+Amsterdam,6200.0,true
+Vienna,6500.0,true
+Zurich,6600.0,true
+Oslo,6900.0,true
+Stockholm,7000.0,true
+Helsinki,7200.0,true
+Lisbon,6800.0,true
+Athens,7100.0,true
+Dublin,6700.0,true
+Warsaw,7500.0,true
+Prague,7300.0,true
+Budapest,7400.0,true
+Copenhagen,7100.0,true
+Brussels,6300.0,true

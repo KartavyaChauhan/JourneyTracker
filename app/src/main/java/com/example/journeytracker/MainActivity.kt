@@ -26,18 +26,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-        // Bind Views
         stopsRecyclerView = findViewById(R.id.stopsRecyclerView)
         toggleUnitButton = findViewById(R.id.toggleUnitButton)
         nextStopButton = findViewById(R.id.nextStopButton)
         progressBar = findViewById(R.id.progressBar)
 
-        // Set up RecyclerView
         adapter = StopsAdapter(emptyList()) // Start with empty list
         stopsRecyclerView.layoutManager = LinearLayoutManager(this)
         stopsRecyclerView.adapter = adapter
 
-        // Observe LiveData changes
         journeyViewModel.stops.observe(this, Observer { stops ->
             adapter.updateStops(stops)
         })
@@ -50,13 +47,11 @@ class MainActivity : AppCompatActivity() {
             progressBar.progress = (progress * 100).toInt()
         })
 
-        // Handle KM/Miles Toggle
         toggleUnitButton.setOnClickListener {
             isMiles = !isMiles
             adapter.updateDistanceUnit(isMiles)
         }
 
-        // Handle Next Stop Button
         nextStopButton.setOnClickListener {
             journeyViewModel.moveToNextStop()
         }
