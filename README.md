@@ -13,7 +13,6 @@ JourneyTracker is an Android application that helps users track their travel pro
 | Main Screen |
 |------------|
 | ![image](https://github.com/user-attachments/assets/8fa04569-38e4-49c3-8902-25de27e8efab)
-|
 
 ## 🛠️ Tech Stack
 - **Language**: Kotlin
